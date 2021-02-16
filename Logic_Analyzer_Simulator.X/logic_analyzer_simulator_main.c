@@ -45,7 +45,7 @@ int main(void) {
    
     while(1) {
         //execute repeatedly forever and ever and ever...
-        count++; //increment count
+        count++; //increment count ;add break point to see period in simulator
         LATB = count << 2; //assign shift by 2 digits
         delay = 40;
         while(delay--);
