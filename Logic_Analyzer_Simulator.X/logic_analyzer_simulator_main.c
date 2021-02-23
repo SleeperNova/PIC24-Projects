@@ -25,21 +25,16 @@ void setup(void)
 {
     //clock speed to max
     CLKDIVbits.RCDIV = 0; //Set RCDIV=1:1 (default 2:1) 32MHz or FCY/2=16M 
-    
-    //set all pins to 'digital' mode
-    //set I/O port A to inputs
-    //I/O port B to outputs
-    //set all available outputs HIGH
-    AD1PCFG = 0x9fff;
-    TRISA = 0b0000000000011111;
-    TRISB = 0b0000000000000011;
-    LATA = 0xffff;
-    LATB = 0xffff;
+    AD1PCFG = 0x9fff; // all digital pins
+    TRISA = 0b0000000000011111; //tells the direction, determines whether the pin is input or output
+    TRISB = 0b0000000000000011; //read from the port, write to the latch
+    LATA = 0xffff;// latch
+    LATB = 0xffff; //displays the output
 }
 
 int main(void) {
-    unsigned short int count = 0;
-    unsigned long int delay = 0;
+    unsigned short int count = 0; //16 bytes
+    unsigned long int delay = 0; //32 bytes
     
     setup();
    
@@ -48,8 +43,8 @@ int main(void) {
         count++; //increment count ;add break point to see period in simulator
         LATB = count << 2; //assign shift by 2 digits
         delay = 40;
-        while(delay--);
-        asm("nop");
+        while(delay--); 
+        asm("nop"); //assembly "no operation" -- wastes 1 cycle
         asm("nop");
     }
    
