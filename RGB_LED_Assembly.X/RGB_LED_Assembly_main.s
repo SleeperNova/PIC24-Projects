@@ -20,7 +20,29 @@ stack:
 ;somewhere. (There's a link step that looks for it.)
 .global _main                ;BP
 
+wait_10cycles:
+			     ; 2 cycles for function call
+repeat #3		     ; 1 cycle to load and prep
+nop			     ; 3+1 cycles to execute NOP 4 times
+return			     ; 3 cycles for the return     
+
 _main:
 bclr CLKDIV,#8               ;BP
 nop
+mov  #0xffff, w0
+mov  w0, AD1PCFG	     ;set all pins to digital mode
+mov  #0b1111111111111110, w0
+mov  w0, TRISA		     ;set pin RA0 to output
+mov  #0x0001, w0
+mov  w0, LATA		     ;set pin RA0 to high
 
+foreverLoop:
+call  wait_10cycles	     ; 10 cycles
+clr LATA		     ; set pin RA0 low = 1 cycle
+nop			     ; 2 cycles to match BRA delay
+nop			     ;
+repeat #8		     ; 1 cycle to load and prep
+nop			     ; 8+1 cycles to execute NOP 9 times
+Inc LATA		     ; set pin RA0 high = 1 cycle
+			     ; Total = 13 cycles high, 13 cycles low
+bra foreverLoop
