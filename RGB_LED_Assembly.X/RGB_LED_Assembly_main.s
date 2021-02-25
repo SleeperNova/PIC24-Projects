@@ -20,24 +20,34 @@ stack:
 ;somewhere. (There's a link step that looks for it.)
 .global _main                ;BP
 
-wait_10cycles:
-			     ; 2 cycles for function call
-repeat #3		     ; 1 cycle to load and prep
-nop			     ; 3+1 cycles to execute NOP 4 times
-return			     ; 3 cycles for the return     
+delay_100us: ;n= 100us/62.5ns = 1600cycles ---call func. is 2 cycles
+repeat #1593  ;1598 cycles here
+nop
+return
+	
+delay_1ms:  ;n= 1us/62.5ns = 16000cycles ---call func. is 2 cycles
+repeat #15993 ;15998 cycles here
+nop
+return    
 
-wait_24cycles: ;high 
+write_0: ;20cycles; 6 on 14 off
+inc LATA ;1
+repeat #3 ; 1
+nop ; 1+3
+clr LATA ; 1
+repeat #8 ;1
+nop ;8+1
+return ;3
+
+write_1: ;20cycles; 11 on 9 off
+inc LATA ;1
+repeat #8 ; 1
+nop ; 1+8
+clr LATA ;1
+repeat #3 ;1
+nop ;1+3
+return ;3
     
-repeat #14  ;1
-nop         ;14+1
-return      ;3
-    
-wait_32cycles: ;low 
-    
-repeat #21  ;1
-nop         ;21+1
-return      ;3			     
-			     
 _main:
 bclr CLKDIV,#8               ;BP
 nop
@@ -49,11 +59,34 @@ mov  #0x0001, w0
 mov  w0, LATA		     ;set pin RA0 to high ;break point
 
 foreverLoop:
-call wait_24cycles
 clr LATA 
-nop
-call wait_32cycles
-nop 
-nop
-inc LATA
-bra  foreverLoop
+call delay_100us 
+    
+call write_1		     ;24 bit color R G B
+call write_1
+call write_1
+call write_1
+call write_1
+call write_1
+call write_1
+call write_1
+    
+call write_0
+call write_0
+call write_0
+call write_0
+call write_0
+call write_0
+call write_0
+call write_0
+    
+call write_0
+call write_0
+call write_0
+call write_0
+call write_0
+call write_0
+call write_0
+call write_0
+    
+bra foreverLoop
