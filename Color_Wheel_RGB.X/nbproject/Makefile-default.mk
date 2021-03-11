@@ -95,11 +95,11 @@ MP_LINKER_FILE_OPTION=,--script=p24FJ64GA002.gld
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: compile
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-${OBJECTDIR}/Color_Wheel_RGB_main.o: Color_Wheel_RGB_main.c  .generated_files/19ffc94d62ed9f50a5fd30bc3e4685abea419f1c.flag .generated_files/e1b6e65732dd1636c766dc4e9d55a074291150dd.flag
+${OBJECTDIR}/Color_Wheel_RGB_main.o: Color_Wheel_RGB_main.c  .generated_files/c94eaea239b1f7a08a439570269e67bce5a67208.flag .generated_files/e1b6e65732dd1636c766dc4e9d55a074291150dd.flag
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/Color_Wheel_RGB_main.o.d 
 	@${RM} ${OBJECTDIR}/Color_Wheel_RGB_main.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  Color_Wheel_RGB_main.c  -o ${OBJECTDIR}/Color_Wheel_RGB_main.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/Color_Wheel_RGB_main.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	${MP_CC} $(MP_EXTRA_CC_PRE)  Color_Wheel_RGB_main.c  -o ${OBJECTDIR}/Color_Wheel_RGB_main.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/Color_Wheel_RGB_main.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
 	
 else
 ${OBJECTDIR}/Color_Wheel_RGB_main.o: Color_Wheel_RGB_main.c  .generated_files/52c2bd4fc6c7496203c03a863c9987af5a6f96ce.flag .generated_files/e1b6e65732dd1636c766dc4e9d55a074291150dd.flag
@@ -113,11 +113,11 @@ endif
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: assemble
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-${OBJECTDIR}/Color_Wheel_RGB_Assembly.o: Color_Wheel_RGB_Assembly.s  .generated_files/3d04eb83a074ee7a3f84936d7e77cb6909833a95.flag .generated_files/e1b6e65732dd1636c766dc4e9d55a074291150dd.flag
+${OBJECTDIR}/Color_Wheel_RGB_Assembly.o: Color_Wheel_RGB_Assembly.s  .generated_files/8dd07be2424cc30c8436656c8b01f7776f6231a9.flag .generated_files/e1b6e65732dd1636c766dc4e9d55a074291150dd.flag
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/Color_Wheel_RGB_Assembly.o.d 
 	@${RM} ${OBJECTDIR}/Color_Wheel_RGB_Assembly.o 
-	${MP_CC} $(MP_EXTRA_AS_PRE)  Color_Wheel_RGB_Assembly.s  -o ${OBJECTDIR}/Color_Wheel_RGB_Assembly.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1  -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  -Wa,-MD,"${OBJECTDIR}/Color_Wheel_RGB_Assembly.o.d",--defsym=__MPLAB_BUILD=1,--defsym=__MPLAB_DEBUG=1,--defsym=__DEBUG=1,--defsym=__MPLAB_DEBUGGER_SIMULATOR=1,-g,--no-relax$(MP_EXTRA_AS_POST)  -mdfp="${DFP_DIR}/xc16"
+	${MP_CC} $(MP_EXTRA_AS_PRE)  Color_Wheel_RGB_Assembly.s  -o ${OBJECTDIR}/Color_Wheel_RGB_Assembly.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  -Wa,-MD,"${OBJECTDIR}/Color_Wheel_RGB_Assembly.o.d",--defsym=__MPLAB_BUILD=1,--defsym=__ICD2RAM=1,--defsym=__MPLAB_DEBUG=1,--defsym=__DEBUG=1,--defsym=__MPLAB_DEBUGGER_PK3=1,-g,--no-relax$(MP_EXTRA_AS_POST)  -mdfp="${DFP_DIR}/xc16"
 	
 else
 ${OBJECTDIR}/Color_Wheel_RGB_Assembly.o: Color_Wheel_RGB_Assembly.s  .generated_files/66802625da73e9d6d1d71f6f119e140a5b2fa219.flag .generated_files/e1b6e65732dd1636c766dc4e9d55a074291150dd.flag
@@ -139,7 +139,7 @@ endif
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
 dist/${CND_CONF}/${IMAGE_TYPE}/Color_Wheel_RGB.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk    
 	@${MKDIR} dist/${CND_CONF}/${IMAGE_TYPE} 
-	${MP_CC} $(MP_EXTRA_LD_PRE)  -o dist/${CND_CONF}/${IMAGE_TYPE}/Color_Wheel_RGB.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}  ${OBJECTFILES_QUOTED_IF_SPACED}      -mcpu=$(MP_PROCESSOR_OPTION)        -D__DEBUG=__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1  -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)      -Wl,,,--defsym=__MPLAB_BUILD=1,--defsym=__MPLAB_DEBUG=1,--defsym=__DEBUG=1,-D__DEBUG=__DEBUG,--defsym=__MPLAB_DEBUGGER_SIMULATOR=1,$(MP_LINKER_FILE_OPTION),--stack=16,--check-sections,--data-init,--pack-data,--handles,--isr,--no-gc-sections,--fill-upper=0,--stackguard=16,--no-force-link,--smart-io,-Map="${DISTDIR}/${PROJECTNAME}.${IMAGE_TYPE}.map",--report-mem,--memorysummary,dist/${CND_CONF}/${IMAGE_TYPE}/memoryfile.xml$(MP_EXTRA_LD_POST)  -mdfp="${DFP_DIR}/xc16" 
+	${MP_CC} $(MP_EXTRA_LD_PRE)  -o dist/${CND_CONF}/${IMAGE_TYPE}/Color_Wheel_RGB.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}  ${OBJECTFILES_QUOTED_IF_SPACED}      -mcpu=$(MP_PROCESSOR_OPTION)        -D__DEBUG=__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)   -mreserve=data@0x800:0x81F -mreserve=data@0x820:0x821 -mreserve=data@0x822:0x823 -mreserve=data@0x824:0x825 -mreserve=data@0x826:0x84F   -Wl,,,--defsym=__MPLAB_BUILD=1,--defsym=__MPLAB_DEBUG=1,--defsym=__DEBUG=1,-D__DEBUG=__DEBUG,--defsym=__MPLAB_DEBUGGER_PK3=1,$(MP_LINKER_FILE_OPTION),--stack=16,--check-sections,--data-init,--pack-data,--handles,--isr,--no-gc-sections,--fill-upper=0,--stackguard=16,--no-force-link,--smart-io,-Map="${DISTDIR}/${PROJECTNAME}.${IMAGE_TYPE}.map",--report-mem,--memorysummary,dist/${CND_CONF}/${IMAGE_TYPE}/memoryfile.xml$(MP_EXTRA_LD_POST)  -mdfp="${DFP_DIR}/xc16" 
 	
 else
 dist/${CND_CONF}/${IMAGE_TYPE}/Color_Wheel_RGB.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk   

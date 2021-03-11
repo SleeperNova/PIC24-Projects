@@ -11,10 +11,19 @@
 #ifdef	__cplusplus
 extern "C" {
 #endif
-
-
-
-
+void fifty_microsec_delay(void);
+void write_0(void);
+void write_1(void);
+void one_millisec_delay(void);
+void writeColor(int r, int g, int b);
+void delay(int delay_in_ms);
+void drawFrame(int frame);
+uint32_t Wheel(int WheelPos);
+void writePacCol(uint32_t PackedColor);
+int getB(uint32_t RGBval);
+int getG(uint32_t RGBval);
+int getR(uint32_t RGBval);
+uint32_t packColor(int Red, int Blue, int Green);
 #ifdef	__cplusplus
 }
 #endif
