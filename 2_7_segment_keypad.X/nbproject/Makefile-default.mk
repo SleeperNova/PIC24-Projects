@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=2_7_segment_keypad_main.c
+SOURCEFILES_QUOTED_IF_SPACED=2_7_segment_keypad_main.c display.c keypad.c 2_7_segment_keypad_assembly.s
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/2_7_segment_keypad_main.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/2_7_segment_keypad_main.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/2_7_segment_keypad_main.o ${OBJECTDIR}/display.o ${OBJECTDIR}/keypad.o ${OBJECTDIR}/2_7_segment_keypad_assembly.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/2_7_segment_keypad_main.o.d ${OBJECTDIR}/display.o.d ${OBJECTDIR}/keypad.o.d ${OBJECTDIR}/2_7_segment_keypad_assembly.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/2_7_segment_keypad_main.o
+OBJECTFILES=${OBJECTDIR}/2_7_segment_keypad_main.o ${OBJECTDIR}/display.o ${OBJECTDIR}/keypad.o ${OBJECTDIR}/2_7_segment_keypad_assembly.o
 
 # Source Files
-SOURCEFILES=2_7_segment_keypad_main.c
+SOURCEFILES=2_7_segment_keypad_main.c display.c keypad.c 2_7_segment_keypad_assembly.s
 
 
 
@@ -95,11 +95,23 @@ MP_LINKER_FILE_OPTION=,--script=p24FJ64GA002.gld
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: compile
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-${OBJECTDIR}/2_7_segment_keypad_main.o: 2_7_segment_keypad_main.c  .generated_files/636429f571e4e776a621ebd60646b1524b4e8b60.flag .generated_files/e1b6e65732dd1636c766dc4e9d55a074291150dd.flag
+${OBJECTDIR}/2_7_segment_keypad_main.o: 2_7_segment_keypad_main.c  .generated_files/390d95292799da3326f182ed367236bc1e592362.flag .generated_files/e1b6e65732dd1636c766dc4e9d55a074291150dd.flag
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/2_7_segment_keypad_main.o.d 
 	@${RM} ${OBJECTDIR}/2_7_segment_keypad_main.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  2_7_segment_keypad_main.c  -o ${OBJECTDIR}/2_7_segment_keypad_main.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/2_7_segment_keypad_main.o.d"      -g -D__DEBUG     -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	${MP_CC} $(MP_EXTRA_CC_PRE)  2_7_segment_keypad_main.c  -o ${OBJECTDIR}/2_7_segment_keypad_main.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/2_7_segment_keypad_main.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	
+${OBJECTDIR}/display.o: display.c  .generated_files/de487f6706acb6bdcabaf228ef37b9d717079dfc.flag .generated_files/e1b6e65732dd1636c766dc4e9d55a074291150dd.flag
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/display.o.d 
+	@${RM} ${OBJECTDIR}/display.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  display.c  -o ${OBJECTDIR}/display.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/display.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	
+${OBJECTDIR}/keypad.o: keypad.c  .generated_files/dc1b45792cf65d04b7c9fbca8f9dff04a40c19d8.flag .generated_files/e1b6e65732dd1636c766dc4e9d55a074291150dd.flag
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/keypad.o.d 
+	@${RM} ${OBJECTDIR}/keypad.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  keypad.c  -o ${OBJECTDIR}/keypad.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/keypad.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
 	
 else
 ${OBJECTDIR}/2_7_segment_keypad_main.o: 2_7_segment_keypad_main.c  .generated_files/3a3a36218ae2160b2ee664ccabc316f4961f738.flag .generated_files/e1b6e65732dd1636c766dc4e9d55a074291150dd.flag
@@ -108,12 +120,36 @@ ${OBJECTDIR}/2_7_segment_keypad_main.o: 2_7_segment_keypad_main.c  .generated_fi
 	@${RM} ${OBJECTDIR}/2_7_segment_keypad_main.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  2_7_segment_keypad_main.c  -o ${OBJECTDIR}/2_7_segment_keypad_main.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/2_7_segment_keypad_main.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
 	
+${OBJECTDIR}/display.o: display.c  .generated_files/49820c8e90d7a74f733212567c49708be783a11c.flag .generated_files/e1b6e65732dd1636c766dc4e9d55a074291150dd.flag
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/display.o.d 
+	@${RM} ${OBJECTDIR}/display.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  display.c  -o ${OBJECTDIR}/display.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/display.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	
+${OBJECTDIR}/keypad.o: keypad.c  .generated_files/b5801373589c88a2a888a2e0c47c6252c37969b9.flag .generated_files/e1b6e65732dd1636c766dc4e9d55a074291150dd.flag
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/keypad.o.d 
+	@${RM} ${OBJECTDIR}/keypad.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  keypad.c  -o ${OBJECTDIR}/keypad.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/keypad.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	
 endif
 
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: assemble
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
+${OBJECTDIR}/2_7_segment_keypad_assembly.o: 2_7_segment_keypad_assembly.s  .generated_files/681cbf0bd9c4fc556e31259f309e3b35d6a03465.flag .generated_files/e1b6e65732dd1636c766dc4e9d55a074291150dd.flag
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/2_7_segment_keypad_assembly.o.d 
+	@${RM} ${OBJECTDIR}/2_7_segment_keypad_assembly.o 
+	${MP_CC} $(MP_EXTRA_AS_PRE)  2_7_segment_keypad_assembly.s  -o ${OBJECTDIR}/2_7_segment_keypad_assembly.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  -Wa,-MD,"${OBJECTDIR}/2_7_segment_keypad_assembly.o.d",--defsym=__MPLAB_BUILD=1,--defsym=__ICD2RAM=1,--defsym=__MPLAB_DEBUG=1,--defsym=__DEBUG=1,--defsym=__MPLAB_DEBUGGER_PK3=1,-g,--no-relax$(MP_EXTRA_AS_POST)  -mdfp="${DFP_DIR}/xc16"
+	
 else
+${OBJECTDIR}/2_7_segment_keypad_assembly.o: 2_7_segment_keypad_assembly.s  .generated_files/3a42e252c70cce3deef477ea493e8ed350373eeb.flag .generated_files/e1b6e65732dd1636c766dc4e9d55a074291150dd.flag
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/2_7_segment_keypad_assembly.o.d 
+	@${RM} ${OBJECTDIR}/2_7_segment_keypad_assembly.o 
+	${MP_CC} $(MP_EXTRA_AS_PRE)  2_7_segment_keypad_assembly.s  -o ${OBJECTDIR}/2_7_segment_keypad_assembly.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  -Wa,-MD,"${OBJECTDIR}/2_7_segment_keypad_assembly.o.d",--defsym=__MPLAB_BUILD=1,-g,--no-relax$(MP_EXTRA_AS_POST)  -mdfp="${DFP_DIR}/xc16"
+	
 endif
 
 # ------------------------------------------------------------------------------------
@@ -127,7 +163,7 @@ endif
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
 dist/${CND_CONF}/${IMAGE_TYPE}/2_7_segment_keypad.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk    
 	@${MKDIR} dist/${CND_CONF}/${IMAGE_TYPE} 
-	${MP_CC} $(MP_EXTRA_LD_PRE)  -o dist/${CND_CONF}/${IMAGE_TYPE}/2_7_segment_keypad.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}  ${OBJECTFILES_QUOTED_IF_SPACED}      -mcpu=$(MP_PROCESSOR_OPTION)        -D__DEBUG=__DEBUG   -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)      -Wl,,,--defsym=__MPLAB_BUILD=1,--defsym=__MPLAB_DEBUG=1,--defsym=__DEBUG=1,-D__DEBUG=__DEBUG,,$(MP_LINKER_FILE_OPTION),--stack=16,--check-sections,--data-init,--pack-data,--handles,--isr,--no-gc-sections,--fill-upper=0,--stackguard=16,--no-force-link,--smart-io,-Map="${DISTDIR}/${PROJECTNAME}.${IMAGE_TYPE}.map",--report-mem,--memorysummary,dist/${CND_CONF}/${IMAGE_TYPE}/memoryfile.xml$(MP_EXTRA_LD_POST)  -mdfp="${DFP_DIR}/xc16" 
+	${MP_CC} $(MP_EXTRA_LD_PRE)  -o dist/${CND_CONF}/${IMAGE_TYPE}/2_7_segment_keypad.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}  ${OBJECTFILES_QUOTED_IF_SPACED}      -mcpu=$(MP_PROCESSOR_OPTION)        -D__DEBUG=__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)   -mreserve=data@0x800:0x81F -mreserve=data@0x820:0x821 -mreserve=data@0x822:0x823 -mreserve=data@0x824:0x825 -mreserve=data@0x826:0x84F   -Wl,,,--defsym=__MPLAB_BUILD=1,--defsym=__MPLAB_DEBUG=1,--defsym=__DEBUG=1,-D__DEBUG=__DEBUG,--defsym=__MPLAB_DEBUGGER_PK3=1,$(MP_LINKER_FILE_OPTION),--stack=16,--check-sections,--data-init,--pack-data,--handles,--isr,--no-gc-sections,--fill-upper=0,--stackguard=16,--no-force-link,--smart-io,-Map="${DISTDIR}/${PROJECTNAME}.${IMAGE_TYPE}.map",--report-mem,--memorysummary,dist/${CND_CONF}/${IMAGE_TYPE}/memoryfile.xml$(MP_EXTRA_LD_POST)  -mdfp="${DFP_DIR}/xc16" 
 	
 else
 dist/${CND_CONF}/${IMAGE_TYPE}/2_7_segment_keypad.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk   
